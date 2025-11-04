@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCode, FaMobileAlt, FaCloud, FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaCode, FaMobileAlt, FaCloud, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import "./App.css";
 
 function App() {
@@ -8,9 +8,9 @@ function App() {
       {/* HERO */}
       <header className="hero">
         <div className="hero-content">
-          <h1>NovaTech Solutions</h1>
+          <h1>NovaGTech Solutions</h1>
           <p>We build modern, powerful web and mobile experiences for your business.</p>
-          <a href="#contact" className="btn">Get Started</a>
+          <a href="#contact" className="btn">Contact Us</a>
         </div>
       </header>
 
@@ -18,9 +18,7 @@ function App() {
       <section id="about" className="about">
         <h2>About Us</h2>
         <p>
-          At <b>NovaTech Solutions</b>, we specialize in designing and developing
-          cutting-edge digital products. Our goal is to help brands stand out
-          with innovative solutions and exceptional user experience.
+          At <b>NovaGTech</b>, Eryk & Szymon specialize in creating digital products with clean design and smooth performance. We focus on simplicity and usability for all users.
         </p>
       </section>
 
@@ -46,17 +44,24 @@ function App() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section id="testimonials" className="testimonials">
-        <h2>What Clients Say</h2>
-        <div className="testimonial-list">
-          <div className="testimonial">
-            <p>"NovaTech completely transformed our online presence — professional and fast!"</p>
-            <h4>— Sarah, CEO of FreshBite</h4>
+      {/* PROJECTS */}
+      <section id="projects" className="projects">
+        <h2>Our Projects</h2>
+        <div className="project-list">
+          <div className="project-card">
+            <h3>Portfolio Website</h3>
+            <p>Eryk created a personal portfolio website using React & Vite to showcase projects and skills.</p>
+            <a href="#" className="btn">View Project</a>
           </div>
-          <div className="testimonial">
-            <p>"The team built a mobile app that boosted our sales by 40%. Amazing work!"</p>
-            <h4>— Mark, Founder of QuickShop</h4>
+          <div className="project-card">
+            <h3>Task Manager App</h3>
+            <p>Szymon built a cross-platform task manager app for mobile, focusing on UI simplicity and usability.</p>
+            <a href="#" className="btn">View Project</a>
+          </div>
+          <div className="project-card">
+            <h3>Cloud API Integration</h3>
+            <p>Together, we implemented a cloud-based backend API for handling dynamic data efficiently.</p>
+            <a href="#" className="btn">View Project</a>
           </div>
         </div>
       </section>
@@ -75,9 +80,9 @@ function App() {
 
       {/* FOOTER */}
       <footer>
-        <p>© 2025 NovaTech Solutions. All rights reserved.</p>
+        <p>© 2025 NovaGTech Solutions. All rights reserved.</p>
         <div className="socials">
-          <a href="#"><FaFacebook /></a>
+          <a href="#"><FaGithub /></a>
           <a href="#"><FaLinkedin /></a>
           <a href="#"><FaTwitter /></a>
         </div>
