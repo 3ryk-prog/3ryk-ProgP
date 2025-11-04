@@ -7,12 +7,12 @@
 html, body, #root {
   width: 100%;
   height: 100%;
-  overflow-x: hidden; /* 🔥 najważniejsze – blokuje przesuwanie poziome */
+  overflow-x: hidden;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #ffff;
+  background-color: #fff;
 }
 
 .landing {
@@ -23,14 +23,29 @@ body {
 
 /* HERO */
 .hero {
+  position: relative;
   height: 100vh;
-  background: linear-gradient(120deg, #4b6cb7, #182848);
+  background: linear-gradient(120deg, #4b6cb7, #182848, #4b6cb7);
+  background-size: 300% 300%;
+  animation: gradientBG 15s ease infinite;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 0 10%;
+  overflow: hidden; /* żeby cząsteczki nie wychodziły poza hero */
+}
+
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+.hero-content {
+  position: relative;
+  z-index: 1; /* content nad canvas */
 }
 
 .hero-content h1 {
@@ -40,9 +55,19 @@ body {
 
 .hero-content p {
   font-size: 1.3rem;
-  margin-bottom: 30px;
+  margin-bottom: 20px; /* mniejszy odstęp pod tekstem */
+}
+.cursor {
+  display: inline-block;
+  width: 1ch;
+  background-color: transparent;
+  animation: blink 0.7s steps(1) infinite;
 }
 
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
 .btn {
   background-color: #fff;
   color: #182848;
@@ -51,6 +76,8 @@ body {
   font-weight: 600;
   text-decoration: none;
   transition: 0.3s;
+  margin-top: 15px; /* obniżony przycisk */
+  display: inline-block;
 }
 
 .btn:hover {
@@ -103,30 +130,53 @@ body {
   margin-bottom: 15px;
 }
 
-/* TESTIMONIALS */
-.testimonials {
+/* PROJECTS */
+.projects {
+  background-color: #fff;
   padding: 80px 10%;
   text-align: center;
 }
 
-.testimonial-list {
+.projects h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.project-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
+  gap: 30px;
   margin-top: 30px;
 }
 
-.testimonial {
-  background: white;
+.project-card {
+  background-color: #f0f4f8; /* jasny kwadracik */
   padding: 25px;
   width: 300px;
-  border-left: 5px solid #4b6cb7;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  font-style: italic;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* delikatny cień */
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.4s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.project-card.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.project-card:hover {
+  transform: translateY(-5px);
+}
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 /* CONTACT */
 .contact {
   background-color: #182848;
@@ -187,11 +237,67 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .service-list, .testimonial-list {
+  .service-list, .testimonial-list, .project-list {
     flex-direction: column;
   }
 
   .hero-content h1 {
     font-size: 2.2rem;
   }
+}
+.skills {
+  background-color: #fff;
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.skills h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.skill-card {
+  background-color: #e9ecef;
+  padding: 25px;
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+.project-categories {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.category-btn {
+  background-color: #fff;
+  color: #182848;
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid #182848;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.category-btn:hover, .category-btn.active {
+  background-color: #182848;
+  color: white;
+}
+.tsparticles-canvas-el {
+  pointer-events: none !important;
 }
